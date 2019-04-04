@@ -1,0 +1,2 @@
+﻿public enum meteorsBrown : int { meteorBrown_big1, meteorBrown_big2, meteorBrown_big3, meteorBrown_big4 }
+public enum meteorsGrey : int { meteorGrey_big1, meteorGrey_big2, meteorGrey_big3, meteorGrey_big4 }
