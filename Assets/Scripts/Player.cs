@@ -12,14 +12,16 @@ public class Player : MonoBehaviour
     #region Controle de Camera
     CamAspect camAsp = new CamAspect();
     #endregion
-    #region em teste
+    #region Tiros
     [SerializeField]
     GameObject bullet;
 
     [SerializeField]
     GameObject bTransform;
-
+    #endregion
+    #region Score, danos e etc
     [SerializeField]
+    private int life;
     private float impact;
     #endregion
 
@@ -54,14 +56,14 @@ public class Player : MonoBehaviour
     }
     IEnumerator CdFire()
     {
-        yield return new WaitForSeconds(1f);
         joy.Fire(bullet, bTransform.transform);
+        yield return new WaitForSeconds(1f);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.relativeVelocity.magnitude > impact)
         {
-            Debug.Log("Death");
+            life--;
         }
     }
 }

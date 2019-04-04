@@ -131,14 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebca1fd1811521d4ea37d1fab1229302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 0
   atlas: {fileID: 4343727234628468602, guid: dcdb4080aa6c7e349a0a592368e5b455, type: 2}
   meteorRenderer: {fileID: 6775036009015065959}
   meteorSize: 1
-  bMet: {fileID: 6775036009015066265}
   mMet: {fileID: 6775036009015066265, guid: e95f88d8f10af6743b458ac84b18533e, type: 3}
   sMet: {fileID: 6775036009015066265, guid: 1fa921615984411489c113e8ea36f269, type: 3}
   tMet: {fileID: 6775036009015066265, guid: bc11eb6a2f935f148805fa420435de5f, type: 3}
+  scorePoints: {fileID: 0}
 --- !u!60 &8968830611853263768
 PolygonCollider2D:
   m_ObjectHideFlags: 0
