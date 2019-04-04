@@ -8,59 +8,61 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     #endregion
     #region Variaveis de controle
-    // Entradas verticais e horizontais
-    //[SerializeField]
-    //private float vert, hori;
+    Joysticks joy = new Joysticks();
     #endregion
     #region Controle de Camera
-    // Cam
-    [SerializeField]
-    Camera cam;
-    private float screenSizeX;
+    CamAspect camAsp = new CamAspect();
     #endregion
-
-    Joysticks joy = new Joysticks();
-
+    #region em teste
     [SerializeField]
     GameObject bullet;
+
     [SerializeField]
     GameObject bTransform;
 
+    [SerializeField]
+    private float impact;
+    #endregion
+
     void Start()
     {
-        screenSizeX = cam.orthographicSize * cam.aspect;
+        // Instanciação da Camera
+        camAsp.CamStart();
     }
     void Update()
     {
         // Inputs
-        //vert = Joysticks.Vertical;
-        //hori = Joysticks.Horizontal;
         joy.InputJoy();
         StartCoroutine(CdFire());
 
         // Controle de posicionamento
-        Vector2 newPos = transform.position;
-        if (transform.position.y > cam.orthographicSize + 1)
-            newPos.y = -cam.orthographicSize;
-        if (transform.position.y < -cam.orthographicSize - 1)
-            newPos.y = cam.orthographicSize;
-        if (transform.position.x > screenSizeX + 1)
-            newPos.x = -screenSizeX;
-        if (transform.position.x < -screenSizeX - 1)
-            newPos.x = screenSizeX;
-        
+        Vector2 newPos = this.transform.position;
+        if (this.transform.position.y > CamAspect.cam.orthographicSize + 1)
+            newPos.y = -CamAspect.cam.orthographicSize;
+        if (transform.position.y < -CamAspect.cam.orthographicSize - 1)
+            newPos.y = CamAspect.cam.orthographicSize;
+        if (transform.position.x > camAsp.screenSizeX + 1)
+            newPos.x = -camAsp.screenSizeX;
+        if (transform.position.x < -camAsp.screenSizeX - 1)
+            newPos.x = camAsp.screenSizeX;
+
         transform.position = newPos;
     }
     void FixedUpdate()
     {
-        //rb.AddRelativeForce(Vector2.up * vert);
-        //rb.AddTorque(-hori * 10);
         rb.AddRelativeForce(Vector2.up * Joysticks.Vertical);
-        rb.AddTorque(-Joysticks.Horizontal * 10);
+        transform.Rotate(Vector3.forward * Joysticks.Horizontal * Time.deltaTime * -100);
     }
     IEnumerator CdFire()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         joy.Fire(bullet, bTransform.transform);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.relativeVelocity.magnitude > impact)
+        {
+            Debug.Log("Death");
+        }
     }
 }

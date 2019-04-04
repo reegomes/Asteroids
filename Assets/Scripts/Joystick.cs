@@ -10,10 +10,6 @@ public class Joysticks : MonoBehaviour
     public static float Horizontal { get; set; }
     #endregion
 
-    //[SerializeField]
-    //private GameObject bullet;
-
-
     public void InputJoy()
     {
         // Inputs
@@ -26,12 +22,7 @@ public class Joysticks : MonoBehaviour
         {
             //GameObject tBullet = Instantiate(bullet, tf.position, Quaternion.identity);
             GameObject tBullet = Instantiate(bullet, tf.position, tf.rotation);
-            tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 50);
-            
+            tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 500);
         }
-            
-
-        //Instantiate(bullet, tf.position, tf.rotation);
-        //Instantiate(bullet, transform.position, Quaternion.identity);
     }
 }

@@ -12,7 +12,9 @@ public class Meteors : MonoBehaviour
     private SpriteAtlas atlas;
     [SerializeField]
     SpriteRenderer meteorRenderer;
-    // Start is called before the first frame update
+
+    public byte meteorSize;
+
     void Start()
     {
         int swit = Random.Range(0, 2);
@@ -22,29 +24,32 @@ public class Meteors : MonoBehaviour
             case 0:
                 meteorsBrown brownRnd = (meteorsBrown)Random.Range(0, 3);
                 this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
-                break;
+                int brownValue = (int)brownRnd;
+                
+                if (brownValue >= 0 && brownValue <= 2)
+                {
+                    SetSize(1);
+                }
+                else if (brownValue >= 3 && brownValue <= 5)
+                {
+                    SetSize(2);
+                }
+                else
+                {
+                    SetSize(3);
+                }
+                    break;
             case 1:
                 meteorsGrey grayRnd = (meteorsGrey)Random.Range(0, 3);
                 this.meteorRenderer.sprite = atlas.GetSprite(grayRnd.ToString());
+                
                 break;
             default:
                 break;
         }
-
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetSize(byte size)
     {
-        ChangeSprite();
-    }
-    void ChangeSprite()
-    {
-        if(currentType != lastType)
-        {
-            meteorRenderer.sprite = atlas.GetSprite(currentType.ToString());
-
-            lastType = currentType;
-        }
+        this.meteorSize = size;
     }
 }
