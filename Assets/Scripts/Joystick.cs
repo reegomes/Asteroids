@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 public class Joysticks : MonoBehaviour
 {
     #region Variaveis de controle

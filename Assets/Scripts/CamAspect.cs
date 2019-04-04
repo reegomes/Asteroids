@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CamAspect : MonoBehaviour
 {
@@ -10,7 +8,6 @@ public class CamAspect : MonoBehaviour
     public static Camera cam;
     public float screenSizeX;
     #endregion
-
     public void CamStart()
     {
         cam = Camera.main;

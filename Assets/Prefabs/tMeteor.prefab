@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6775036009015065954}
   - component: {fileID: 8968830611853263768}
   m_Layer: 0
-  m_Name: meteor
+  m_Name: tMeteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,12 +72,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eaefa7324f6cce34184db67827042395, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44a62c3e6cda5b945be22bfd7aff788b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.01, y: 0.84}
+  m_Size: {x: 0.18, y: 0.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.66216475
+  m_Mass: 0.030699998
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -131,14 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebca1fd1811521d4ea37d1fab1229302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 0
+  currentType: 8
   atlas: {fileID: 4343727234628468602, guid: dcdb4080aa6c7e349a0a592368e5b455, type: 2}
   meteorRenderer: {fileID: 6775036009015065959}
-  meteorSize: 1
-  bMet: {fileID: 6775036009015066265}
+  meteorSize: 4
+  bMet: {fileID: 6775036009015066265, guid: 1193a193bbb3cad4f9729564d0b7f54d, type: 3}
   mMet: {fileID: 6775036009015066265, guid: e95f88d8f10af6743b458ac84b18533e, type: 3}
   sMet: {fileID: 6775036009015066265, guid: 1fa921615984411489c113e8ea36f269, type: 3}
-  tMet: {fileID: 6775036009015066265, guid: bc11eb6a2f935f148805fa420435de5f, type: 3}
+  tMet: {fileID: 6775036009015066265}
 --- !u!60 &8968830611853263768
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -156,24 +156,17 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.01, y: 0.84}
-    newSize: {x: 1.01, y: 0.84}
+    oldSize: {x: 0.18, y: 0.18}
+    newSize: {x: 0.18, y: 0.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.405, y: -0.25}
-      - {x: 0.48564506, y: -0.030322313}
-      - {x: 0.505, y: 0.049999997}
-      - {x: 0.255, y: 0.42}
-      - {x: -0.345, y: 0.42}
-      - {x: -0.36499998, y: 0.41}
-      - {x: -0.505, y: 0.049999997}
-      - {x: -0.505, y: -0.14999999}
-      - {x: -0.24499999, y: -0.42}
-      - {x: -0.16499999, y: -0.42}
-      - {x: 0.114999995, y: -0.32}
-      - {x: 0.22080588, y: -0.29741812}
-      - {x: 0.34177327, y: -0.32516098}
+    - - {x: -0.06, y: 0.089999996}
+      - {x: -0.089999996, y: 0.03}
+      - {x: -0.089999996, y: -0.049999997}
+      - {x: -0.049999997, y: -0.089999996}
+      - {x: 0.089999996, y: -0.089999996}
+      - {x: 0.089999996, y: 0.089999996}

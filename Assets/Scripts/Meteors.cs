@@ -1,55 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.U2D;
 
 public class Meteors : MonoBehaviour
 {
     [SerializeField]
-    private meteorsBrown currentType;
-    private meteorsBrown lastType;
-    [SerializeField]
     private SpriteAtlas atlas;
     [SerializeField]
     SpriteRenderer meteorRenderer;
-
     public byte meteorSize;
+    [SerializeField]
+    GameObject mMet, sMet, tMet;
 
-    void Start()
+
+    private void Start()
     {
-        int swit = Random.Range(0, 2);
+        int color = Random.Range(0, 2);
+        Debug.Log(color);
 
-        switch (swit)
+        if (meteorSize == 1)
         {
-            case 0:
-                meteorsBrown brownRnd = (meteorsBrown)Random.Range(0, 3);
-                this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
-                int brownValue = (int)brownRnd;
-                
-                if (brownValue >= 0 && brownValue <= 2)
-                {
-                    SetSize(1);
-                }
-                else if (brownValue >= 3 && brownValue <= 5)
-                {
-                    SetSize(2);
-                }
-                else
-                {
-                    SetSize(3);
-                }
-                    break;
-            case 1:
-                meteorsGrey grayRnd = (meteorsGrey)Random.Range(0, 3);
-                this.meteorRenderer.sprite = atlas.GetSprite(grayRnd.ToString());
-                
-                break;
-            default:
-                break;
+            MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(0, 3);
+            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+        }
+        else if (meteorSize == 2)
+        {
+            MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(4, 5);
+            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+        }
+        else if (meteorSize == 3)
+        {
+            MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(6, 7);
+            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+        }
+        else if (meteorSize == 4)
+        {
+            MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(8, 9);
+            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
         }
     }
-    public void SetSize(byte size)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.meteorSize = size;
+        Destroy(collision.gameObject);
+        if (this.meteorSize == 1)
+        {
+            GameObject meteor1 = Instantiate(mMet, transform.position, transform.rotation);
+            GameObject meteor2 = Instantiate(mMet, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else if (this.meteorSize == 2)
+        {
+            GameObject meteor1 = Instantiate(sMet, transform.position, transform.rotation);
+            GameObject meteor2 = Instantiate(sMet, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else if (this.meteorSize == 3)
+        {
+            GameObject meteor1 = Instantiate(tMet, transform.position, transform.rotation);
+            GameObject meteor2 = Instantiate(tMet, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 }
