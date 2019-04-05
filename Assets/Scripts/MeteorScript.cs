@@ -26,10 +26,10 @@ public class MeteorScript : MonoBehaviour
             newPos.y = -CamAspect.cam.orthographicSize;
         if (transform.position.y < -CamAspect.cam.orthographicSize - 1)
             newPos.y = CamAspect.cam.orthographicSize;
-        if (transform.position.x > camAsp.screenSizeX + 1)
-            newPos.x = -camAsp.screenSizeX;
-        if (transform.position.x < -camAsp.screenSizeX - 1)
-            newPos.x = camAsp.screenSizeX;
+        if (transform.position.x > camAsp.ScreenSizeX + 1)
+            newPos.x = -camAsp.ScreenSizeX;
+        if (transform.position.x < -camAsp.ScreenSizeX - 1)
+            newPos.x = camAsp.ScreenSizeX;
 
         transform.position = newPos;
     }

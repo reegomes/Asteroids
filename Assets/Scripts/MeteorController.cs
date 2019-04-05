@@ -3,15 +3,22 @@ using UnityEngine;
 public class MeteorController : MonoBehaviour
 {
     [SerializeField]
-    GameObject meteor;
+    private GameObject meteor;
+    [SerializeField]
+    private GameObject[] spawners;
+    int spawn;
     void Start()
     {
-        StartCoroutine(Spawn(16));
+        StartCoroutine(Spawn(10, SetSpawner()));
     }
-    IEnumerator Spawn(int timing)
+    int SetSpawner()
     {
-        Instantiate(meteor, Vector2.zero, Quaternion.identity);
+        return spawn = Random.Range(0, spawners.Length);
+    }
+    IEnumerator Spawn(int timing, int i)
+    {
+        Instantiate(meteor, spawners[i].transform.position, Quaternion.identity);
         yield return new WaitForSeconds(timing);
-        StartCoroutine(Spawn(timing));
+        StartCoroutine(Spawn(timing, SetSpawner()));
     }
 }
