@@ -17,9 +17,7 @@ public class Meteors : MonoBehaviour
     #endregion
     private void Start()
     {
-        int color = Random.Range(0, 2);
-        Debug.Log(color);
-
+        //Selecão de Sprites
         if (meteorSize == 1)
         {
             MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(0, 3);
@@ -49,6 +47,7 @@ public class Meteors : MonoBehaviour
             GameObject meteor1 = Instantiate(mMet, transform.position, transform.rotation);
             GameObject meteor2 = Instantiate(mMet, transform.position, transform.rotation);
             AddScore(100);
+            MeteorController.metNumOnScreen--;
             Destroy(this.gameObject);
         }
         else if (this.meteorSize == 2)
@@ -56,6 +55,7 @@ public class Meteors : MonoBehaviour
             GameObject meteor1 = Instantiate(sMet, transform.position, transform.rotation);
             GameObject meteor2 = Instantiate(sMet, transform.position, transform.rotation);
             AddScore(250);
+            MeteorController.metNumOnScreen--;
             Destroy(this.gameObject);
         }
         else if (this.meteorSize == 3)
@@ -63,15 +63,16 @@ public class Meteors : MonoBehaviour
             //GameObject meteor1 = Instantiate(tMet, transform.position, transform.rotation);
             //GameObject meteor2 = Instantiate(tMet, transform.position, transform.rotation);
             AddScore(500);
+            MeteorController.metNumOnScreen--;
             Destroy(this.gameObject);
         }
         else if (this.meteorSize == 4)
         {
-            // Muito dificil acertar;
+            // Muito dificil acertar, mas quem sabe num modo insano
+            //AddScore(1500);
+            //MeteorController.MetNumOnScreen--;         
+            //Destroy(this.gameObject);
         }
     }
-    void AddScore(int points)
-    {
-        Score.score += points;
-    }
+    void AddScore(int points) => Score.score += points;
 }

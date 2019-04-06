@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
-    public static int score, highScore;
+    public static int score, highScore = 1000, totalPoints;
     [SerializeField]
     private Text txtScore, txtHighScore;
     private void Start()
@@ -12,14 +12,13 @@ public class Score : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(string.Format("Score: {0}", score));
+        //Debug.Log(string.Format("Score: {0}", score));
         txtScore.text = score.ToString();
     }
     public static void CheckHighScore()
     {
+        totalPoints += score;
         if (score > highScore)
-        {
             highScore = score;
-        }
     }
 }

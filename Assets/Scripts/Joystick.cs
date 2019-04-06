@@ -10,7 +10,7 @@ public class Joysticks : MonoBehaviour
     public void InputJoy()
     {
         // Inputs
-        Vertical = Input.GetAxis("Vertical");
+        Vertical = Input.GetAxisRaw("Vertical");
         Horizontal = Input.GetAxis("Horizontal");
     }
     public void Fire(GameObject bullet, Transform tf)

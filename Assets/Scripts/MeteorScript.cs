@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class MeteorScript : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +16,9 @@ public class MeteorScript : MonoBehaviour
         Vector2 rotation = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
         rb.AddForce(rotation);
         rb.AddTorque(speed);
+
+        // Adiciona o numero de meteoros no controlador
+        MeteorController.metNumOnScreen++;
     }
     void Update()
     {

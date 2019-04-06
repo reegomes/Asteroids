@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     Collider2D col;
     #endregion
-
     void Start()
     {
         // Instanciação da Camera
@@ -96,6 +95,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                LifesUI.RemoveLife();
                 col.enabled = false;
                 sptRender.enabled = false;
                 TakeDamage(1);
