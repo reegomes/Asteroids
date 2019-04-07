@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class HighScore : MonoBehaviour
 {
     public Text playerDisplay, scoreDisplay, txtTotalPoints, txtaliesKilled;
@@ -33,12 +34,12 @@ public class HighScore : MonoBehaviour
         if (www.text == "0")
         {
             Debug.Log("Submit.");
+            SceneManager.LoadScene(0);
         }
         else
         {
             Debug.Log("Save failed. Error #" + www.text);
         }
-
         DBManager.LogOut();
     }
 }

@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         }
 
         // Efeito do propulsor
-        if (Joysticks.Vertical > 0 && isAlive == true)
+        if (Joysticks.Vertical > 0 && isAlive == true && GM.isPause == false)
         {
             rocket.SetActive(true);
         }
