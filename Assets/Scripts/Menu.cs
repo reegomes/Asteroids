@@ -2,30 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
-
-    public void GoToRegister()
+    [SerializeField]
+    private Button registerButton, loginButton;
+    public static bool isLogged;
+    private void Start()
     {
-
+        if (isLogged == true)
+        {
+            registerButton.interactable = false;
+            loginButton.interactable = false;
+        }
     }
-
-    public void GoToLogin()
+    public void GoToRegister() => SceneManager.LoadScene(1);
+    public void GoToLogin() => SceneManager.LoadScene(2);
+    public void GoToMainMenu() => SceneManager.LoadScene(0);
+    public void GoToLeaderBoards() => SceneManager.LoadScene(4);
+    public void GoToGame() => SceneManager.LoadScene(3);
+    public void SaveGameOnQuit()
     {
-
-    }
-
-    public void GoToMainMenu()
-    {
-
-    }
-
-    public void GoToLeaderBoards()
-    {
-
-    }
-    public void GoToGame()
-    {
-
+        // Por garantia
+        PlayerPrefs.Save();
+        // OnApplicationQuit já chama o PlayerPrefs, mas..
+        Application.Quit();
     }
 }

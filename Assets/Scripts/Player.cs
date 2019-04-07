@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     #region Tiros
     [SerializeField]
     GameObject bullet;
-
     [SerializeField]
     GameObject bTransform;
     #endregion
@@ -37,6 +36,8 @@ public class Player : MonoBehaviour
     #endregion
     void Start()
     {
+        // Força do impactor
+        impact = 3;
         // Instanciação da Camera
         camAsp.CamStart();
         // Inicia vivo

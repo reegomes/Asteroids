@@ -2,8 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
-public class Register : MonoBehaviour
+
+public class Login : MonoBehaviour
 {
     [SerializeField]
     private InputField nameField, passwordField;
@@ -13,29 +13,31 @@ public class Register : MonoBehaviour
     {
         if (nameField.isFocused && Input.GetKeyDown(KeyCode.Tab))
             passwordField.ActivateInputField();
+        if (Input.GetKeyDown(KeyCode.Return))
+            CallLogin();
     }
-    public void CallRegister()
+    public void CallLogin()
     {
-        StartCoroutine(RegisterCo());
+        StartCoroutine(LoginCo());
     }
-    IEnumerator RegisterCo()
+    IEnumerator LoginCo()
     {
         WWWForm form = new WWWForm();
         form.AddField("name", nameField.text);
         form.AddField("password", passwordField.text);
 
-        WWW www = new WWW("https://citysleeping.000webhostapp.com/register.php", form);
+        WWW www = new WWW("https://citysleeping.000webhostapp.com/login.php", form);
         yield return www;
-
-        if (www.text == "0")
+        if (www.text[0] == '0')
         {
-            // apagar o debug
-            Debug.Log("Success");
+            DBManager.username = nameField.text;
+            DBManager.scoreDB = int.Parse(www.text.Split('\t')[1]);
+            Menu.isLogged = true;
             SceneManager.LoadScene(0);
         }
         else
         {
-            Debug.Log("User creation failed. Error #" + www.text);
+            Debug.Log("User login failed. Error #" + www.text);
         }
     }
     public void VerifyInputs() => submitButton.interactable = (nameField.text.Length >= 3 && passwordField.text.Length >= 3);
