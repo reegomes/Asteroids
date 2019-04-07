@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.U2D;
-
 public class Meteors : MonoBehaviour
 {
     #region Geracao e opcoes dos meteoros
@@ -9,11 +8,6 @@ public class Meteors : MonoBehaviour
     [SerializeField]
     SpriteRenderer meteorRenderer;
     public byte meteorSize;
-    [SerializeField]
-    GameObject mMet, sMet, tMet;
-    #endregion
-    #region Score
-
     #endregion
     private void Start()
     {
@@ -44,35 +38,35 @@ public class Meteors : MonoBehaviour
         Destroy(collision.gameObject);
         if (this.meteorSize == 1)
         {
-            GameObject meteor1 = Instantiate(mMet, transform.position, transform.rotation);
-            GameObject meteor2 = Instantiate(mMet, transform.position, transform.rotation);
             AddScore(100);
             MeteorController.metNumOnScreen--;
-            Destroy(this.gameObject);
+
+            StartCoroutine(GM.Instance.SpawnInstance(1, meteorSize, transform.position));
+            OnDisable();
         }
         else if (this.meteorSize == 2)
         {
-            GameObject meteor1 = Instantiate(sMet, transform.position, transform.rotation);
-            GameObject meteor2 = Instantiate(sMet, transform.position, transform.rotation);
             AddScore(250);
             MeteorController.metNumOnScreen--;
-            Destroy(this.gameObject);
+
+            StartCoroutine(GM.Instance.SpawnInstance(1, meteorSize, transform.position));
+            OnDisable();
         }
         else if (this.meteorSize == 3)
         {
-            //GameObject meteor1 = Instantiate(tMet, transform.position, transform.rotation);
-            //GameObject meteor2 = Instantiate(tMet, transform.position, transform.rotation);
             AddScore(500);
             MeteorController.metNumOnScreen--;
-            Destroy(this.gameObject);
+
+            OnDisable();
         }
         else if (this.meteorSize == 4)
         {
             // Muito dificil acertar, mas quem sabe num modo insano
             //AddScore(1500);
-            //MeteorController.MetNumOnScreen--;         
-            //Destroy(this.gameObject);
+            //MeteorController.MetNumOnScreen--;
+            //OnDisable();         
         }
     }
+    private void OnDisable() => this.gameObject.SetActive(false);
     void AddScore(int points) => Score.score += points;
 }

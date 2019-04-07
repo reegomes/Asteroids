@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Animations;
 public class Player : MonoBehaviour
 {
     #region Rigidbody
@@ -23,7 +22,7 @@ public class Player : MonoBehaviour
     #endregion
     #region Score, danos e etc
     [SerializeField]
-    private int life = 3;
+    public static int life = 3;
     private float impact;
     [SerializeField]
     private AudioSource sDeath, sDamage;
@@ -48,8 +47,12 @@ public class Player : MonoBehaviour
         // Inputs
         if (isAlive)
         {
-            joy.InputJoy();
-            StartCoroutine(CdFire());
+            // Não instanciar tiros ou sons durante o pause
+            if (!GM.isPause)
+            {
+                joy.InputJoy();
+                StartCoroutine(CdFire());
+            }
 
             // Controle de posicionamento
             Vector2 newPos = this.transform.position;
@@ -86,7 +89,7 @@ public class Player : MonoBehaviour
         if (collision.relativeVelocity.magnitude > impact)
         {
             isAlive = false;
-            if (life <= 0)
+            if (life == 0)
             {
                 col.enabled = false;
                 sptRender.enabled = false;

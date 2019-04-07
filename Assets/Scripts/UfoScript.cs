@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class UfoScript : MonoBehaviour
 {
     [SerializeField]
@@ -23,15 +22,20 @@ public class UfoScript : MonoBehaviour
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
         if (this.transform.position.y > CamAspect.cam.orthographicSize + 3)
-            Destroy(this.gameObject);
+            DestroyThis();
         if (transform.position.y < -CamAspect.cam.orthographicSize - 3)
-            Destroy(this.gameObject);
+            DestroyThis();
         if (transform.position.x > camAsp.ScreenSizeX + 3)
-            Destroy(this.gameObject);
+            DestroyThis();
         if (transform.position.x < -camAsp.ScreenSizeX - 1)
-            Destroy(this.gameObject);
+            DestroyThis();
 
         transform.position = newPos;
+    }
+    void DestroyThis()
+    {
+        MeteorController.TotalUfo--;
+        Destroy(this.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

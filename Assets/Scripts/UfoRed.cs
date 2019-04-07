@@ -31,29 +31,22 @@ public class UfoRed : MonoBehaviour
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
         if (this.transform.position.y > CamAspect.cam.orthographicSize + 3)
-        {
-            MeteorController.TotalUfo--;
-            Destroy(this.gameObject);
-        }
+            DestroyThis();
         if (transform.position.y < -CamAspect.cam.orthographicSize - 3)
-        {
-            MeteorController.TotalUfo--;
-            Destroy(this.gameObject);
-        }
+            DestroyThis();
         if (transform.position.x > camAsp.ScreenSizeX + 3)
-        {
-            MeteorController.TotalUfo--;
-            Destroy(this.gameObject);
-        }
+            DestroyThis();
         if (transform.position.x < -camAsp.ScreenSizeX - 1)
-        {
-            MeteorController.TotalUfo--;
-            Destroy(this.gameObject);
-        }
+            DestroyThis();
 
         transform.position = newPos;
 
         LookAt();
+    }
+    void DestroyThis()
+    {
+        MeteorController.TotalUfo--;
+        Destroy(this.gameObject);
     }
     void LookAt()
     {
@@ -75,6 +68,7 @@ public class UfoRed : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AddScore(1000);
+        //LifesUI.AddLife();
         Destroy(this.gameObject);
     }
     void AddScore(int points) => Score.score += points;

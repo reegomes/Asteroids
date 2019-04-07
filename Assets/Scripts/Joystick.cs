@@ -6,7 +6,6 @@ public class Joysticks : MonoBehaviour
     public static float Vertical { get; set; }
     public static float Horizontal { get; set; }
     #endregion
-
     public void InputJoy()
     {
         // Inputs
@@ -17,7 +16,6 @@ public class Joysticks : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
         {
-            //GameObject tBullet = Instantiate(bullet, tf.position, Quaternion.identity);
             GameObject tBullet = Instantiate(bullet, tf.position, tf.rotation);
             tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 500);
         }

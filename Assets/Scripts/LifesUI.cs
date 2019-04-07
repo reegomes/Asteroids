@@ -1,19 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class LifesUI : MonoBehaviour
 {
+    #region Variaveis de controle da UI
     [SerializeField]
     GameObject[] Lifes;
     private static int lifeAmount;
-
     public static int LifeAmount { get => lifeAmount; set => lifeAmount = value; }
-
-    private void Start()
-    {
-        lifeAmount = 3;
-    }
+    #endregion
+    private void Start() => lifeAmount = 3;
     private void Update()
     {
         switch (lifeAmount)

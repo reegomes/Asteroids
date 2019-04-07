@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 203097813258341738}
   - component: {fileID: 880484640969507501}
   - component: {fileID: 409009644563615770}
+  - component: {fileID: 1183581885947396668}
   m_Layer: 0
   m_Name: Ufo1
   m_TagString: Untagged
@@ -94,7 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74780b3ad26a5da4fb70ea1b5d7a9a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   rb: {fileID: 409009644563615770}
   bullet: {fileID: 2570430661495081163, guid: 0893f6bc872f7804bbfd30ad35b13c24, type: 3}
   bTransform: {fileID: 7218345314399696007}
@@ -119,6 +119,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1183581885947396668
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351919682135389161}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.455
 --- !u!1 &7218345314399696007
 GameObject:
   m_ObjectHideFlags: 0
