@@ -19,6 +19,7 @@ public class MeteorController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        print("Meteoros na tela: " + metNumOnScreen);
         if (totalMet != 0 && (totalMet % 20) == 0 && TotalUfo < 1)
             StartCoroutine(SpawnUfo(a: Random.Range(0, 2), b: SetSpawnerUfo()));
     }

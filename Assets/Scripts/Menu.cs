@@ -5,6 +5,8 @@ public class Menu : MonoBehaviour
 {
     [SerializeField]
     private Button registerButton, loginButton;
+    [SerializeField]
+    private Text txtOffline;
     public static bool isLogged;
     private void Start()
     {
@@ -12,7 +14,10 @@ public class Menu : MonoBehaviour
         {
             registerButton.interactable = false;
             loginButton.interactable = false;
+            txtOffline.text = "Play Asteroids";
         }
+        else
+            txtOffline.text = "Play Offline";
     }
     public void GoToRegister() => SceneManager.LoadScene(1);
     public void GoToLogin() => SceneManager.LoadScene(2);

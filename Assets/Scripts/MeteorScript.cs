@@ -2,10 +2,11 @@
 public class MeteorScript : MonoBehaviour
 {
     [SerializeField]
-    private float speed, rotation;
+    private float speed;
     [SerializeField]
     Rigidbody2D rb;
     CamAspect camAsp = new CamAspect();
+    private void OnEnable() => Start();
     void Start()
     {
         // Instanciação da Camera

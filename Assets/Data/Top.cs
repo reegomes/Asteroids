@@ -2,16 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using TMPro;
-
 public class Top : MonoBehaviour
 {
     [SerializeField]
     private string[] rank;
     [SerializeField]
     private Text txtTop;
-
-
     private void Start()
     {
         StartCoroutine(GetText());
@@ -34,7 +30,6 @@ public class Top : MonoBehaviour
             }
         }
     }
-
     public override string ToString()
     {
         //perdão pela gambiarra, o tempo é curto :v

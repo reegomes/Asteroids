@@ -23,7 +23,7 @@ public class GM : MonoBehaviour
     #endregion
     #region Instanciação dos meteoros
     public GameObject meteorPrefab, mediumMeteorPrefab, smallMeteorPrefab;
-    public int meteorsToSpawn = 30, spawn;
+    public int meteorsToSpawn = 30;
     public GameObject[] spawners;
     public List<GameObject> meteorsList = new List<GameObject>();
     public List<GameObject> mediumMeteorsList = new List<GameObject>();
@@ -59,7 +59,7 @@ public class GM : MonoBehaviour
     {
         Debug.Log("Spawn Iniciado");
         yield return new WaitForSeconds(timing);
-        if (MeteorController.metNumOnScreen <= 9)
+        if (MeteorController.metNumOnScreen <= 19)
         {
             MeteorController.totalMet++;
             for (int i = 0; i < GM.Instance.meteorsList.Count; i++)
@@ -97,6 +97,11 @@ public class GM : MonoBehaviour
                         break;
                     }
                 }
+                StartCoroutine(SpawnInstance(timing));
+            }
+            else
+            {
+                StartCoroutine(SpawnInstance(timing));
             }
         }
         else if (a == 2)
@@ -116,6 +121,11 @@ public class GM : MonoBehaviour
                         break;
                     }
                 }
+                StartCoroutine(SpawnInstance(timing));
+            }
+            else
+            {
+                StartCoroutine(SpawnInstance(timing));
             }
         }
         yield return new WaitForSeconds(timing);

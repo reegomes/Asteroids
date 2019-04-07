@@ -1786,8 +1786,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorPrefab: {fileID: 6775036009015066265, guid: 1193a193bbb3cad4f9729564d0b7f54d,
     type: 3}
-  mediumMeteorProfab: {fileID: 0}
-  smallMeteorProfab: {fileID: 0}
+  mediumMeteorPrefab: {fileID: 6775036009015066265, guid: e95f88d8f10af6743b458ac84b18533e,
+    type: 3}
+  smallMeteorPrefab: {fileID: 6775036009015066265, guid: 1fa921615984411489c113e8ea36f269,
+    type: 3}
   meteorsToSpawn: 30
   spawn: 0
   spawners:
@@ -1797,7 +1799,9 @@ MonoBehaviour:
   - {fileID: 1195655445}
   - {fileID: 2072521163}
   - {fileID: 324998992}
-  meterosList: []
+  meteorsList: []
+  mediumMeteorsList: []
+  smallMeteorsList: []
 --- !u!4 &1428794567
 Transform:
   m_ObjectHideFlags: 0
@@ -2734,7 +2738,6 @@ MonoBehaviour:
   isAlive: 0
   bullet: {fileID: 6575858824443177634, guid: cd4ea12456230c04c99eaa2f843e1703, type: 3}
   bTransform: {fileID: 794507974}
-  life: 3
   sDeath: {fileID: 1804043051}
   sDamage: {fileID: 1804043050}
   rocket: {fileID: 644073455}
@@ -3289,17 +3292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f519d603e6f910d408bb1c65c9f59500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteor: {fileID: 6775036009015066265, guid: 1193a193bbb3cad4f9729564d0b7f54d, type: 3}
   ufos:
   - {fileID: 5070166382464142502, guid: 86445cb5eadbced4f89e013c17cf311f, type: 3}
   - {fileID: 4351919682135389161, guid: 8c0ee245f1b7c1f4fa2f5f43add33266, type: 3}
-  spawners:
-  - {fileID: 1692518559}
-  - {fileID: 955286213}
-  - {fileID: 1984734111}
-  - {fileID: 1182637386}
-  - {fileID: 1015079152}
-  - {fileID: 1932353484}
   ufoSpawners:
   - {fileID: 215830093}
   - {fileID: 20537957}

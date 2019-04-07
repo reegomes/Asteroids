@@ -389,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registerButton: {fileID: 944828813}
   loginButton: {fileID: 818591580}
+  txtOffline: {fileID: 1979445535}
 --- !u!114 &649731278
 MonoBehaviour:
   m_ObjectHideFlags: 0
