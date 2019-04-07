@@ -10,4 +10,5 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void Restart() => SceneManager.LoadSceneAsync(sceneBuildIndex: 3);
     public void GoToMainMenu() => SceneManager.LoadSceneAsync(sceneBuildIndex: 0);
     public void GoToLeaderBoards() => SceneManager.LoadSceneAsync(sceneBuildIndex: 4);
+    public void QuitGame() => Application.Quit();
 }
