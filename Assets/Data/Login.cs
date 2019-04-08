@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class Login : MonoBehaviour
 {
     [SerializeField]
-    private InputField nameField, passwordField;
+    private InputField _nameField, _passwordField;
     [SerializeField]
-    private Button submitButton;
+    private Button _submitButton;
     public void CallLogin()
     {
         StartCoroutine(LoginCo());
@@ -16,18 +16,18 @@ public class Login : MonoBehaviour
     IEnumerator LoginCo()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", nameField.text);
-        form.AddField("password", passwordField.text);
+        form.AddField("name", _nameField.text);
+        form.AddField("password", _passwordField.text);
 
         WWW www = new WWW("https://citysleeping.000webhostapp.com/login.php", form);
         yield return www;
         if (www.text[0] == '0')
         {
-            DBManager.username = nameField.text;
-            DBManager.scoreDB = int.Parse(www.text.Split('\t')[1]);
-            Menu.isLogged = true;
+            DBManager.Username = _nameField.text;
+            DBManager.ScoreDB = int.Parse(www.text.Split('\t')[1]);
+            Menu.IsLogged = true;
             SceneManager.LoadScene(0);
         }
     }
-    public void VerifyInputs() => submitButton.interactable = (nameField.text.Length >= 3 && passwordField.text.Length >= 3);
+    public void VerifyInputs() => _submitButton.interactable = (_nameField.text.Length >= 3 && _passwordField.text.Length >= 3);
 }

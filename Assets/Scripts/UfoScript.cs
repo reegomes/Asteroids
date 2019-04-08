@@ -2,9 +2,9 @@ using UnityEngine;
 public class UfoScript : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float _speed;
     [SerializeField]
-    Rigidbody2D rb;
+    private Rigidbody2D _rb;
     CamAspect camAsp = new CamAspect();
     protected void Start()
     {
@@ -12,18 +12,18 @@ public class UfoScript : MonoBehaviour
         camAsp.CamStart();
 
         // Controles de velocidade e rotacao
-        speed = 5;
+        _speed = 5;
         Vector2 rotation = new Vector2(100, 0);
-        rb.AddForce(rotation);
-        rb.AddTorque(speed);
+        _rb.AddForce(rotation);
+        _rb.AddTorque(_speed);
     }
     protected void Update()
     {
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
-        if (this.transform.position.y > CamAspect.cam.orthographicSize + 3)
+        if (this.transform.position.y > CamAspect._cam.orthographicSize + 3)
             DestroyThis();
-        if (transform.position.y < -CamAspect.cam.orthographicSize - 3)
+        if (transform.position.y < -CamAspect._cam.orthographicSize - 3)
             DestroyThis();
         if (transform.position.x > camAsp.ScreenSizeX + 3)
             DestroyThis();
@@ -39,9 +39,9 @@ public class UfoScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Score.aliensKilled++;
+        Score.AliensKilled++;
         AddScore(100);
         Destroy(this.gameObject);
     }
-    void AddScore(int points) => Score.score += points;
+    void AddScore(int points) => Score.CurrentScore += points;
 }

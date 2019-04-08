@@ -2,15 +2,14 @@
 using UnityEngine;
 public class UfoRed : MonoBehaviour
 {
-    GameObject tPlayer;
+    private GameObject _tPlayer;
     [SerializeField]
-    Rigidbody2D rb;
+    private Rigidbody2D _rb;
     CamAspect camAsp = new CamAspect();
     [SerializeField]
-    GameObject bullet;
-
+    private GameObject _bullet;
     [SerializeField]
-    GameObject bTransform;
+    private GameObject _bTransform;
     void Start()
     {
         // Instanciação da Camera
@@ -18,21 +17,21 @@ public class UfoRed : MonoBehaviour
 
         // Controles de velocidade
         Vector2 speed = new Vector2(50, 0);
-        rb.AddForce(speed);
+        _rb.AddForce(speed);
 
         // Tiros
         StartCoroutine(Fire());
 
         // Procura personagem
-        tPlayer = GameObject.FindGameObjectWithTag("Player");
+        _tPlayer = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
-        if (this.transform.position.y > CamAspect.cam.orthographicSize + 3)
+        if (this.transform.position.y > CamAspect._cam.orthographicSize + 3)
             DestroyThis();
-        if (transform.position.y < -CamAspect.cam.orthographicSize - 3)
+        if (transform.position.y < -CamAspect._cam.orthographicSize - 3)
             DestroyThis();
         if (transform.position.x > camAsp.ScreenSizeX + 3)
             DestroyThis();
@@ -50,7 +49,7 @@ public class UfoRed : MonoBehaviour
     }
     void LookAt()
     {
-        Vector3 targetPos = tPlayer.gameObject.transform.position;
+        Vector3 targetPos = _tPlayer.gameObject.transform.position;
         Vector3 thisPos = transform.position;
         targetPos.x = targetPos.x - thisPos.x;
         targetPos.y = targetPos.y - thisPos.y;
@@ -60,7 +59,7 @@ public class UfoRed : MonoBehaviour
     }
     IEnumerator Fire()
     {
-        GameObject tBullet = Instantiate(bullet, bTransform.transform.position, bTransform.transform.rotation);
+        GameObject tBullet = Instantiate(_bullet, _bTransform.transform.position, _bTransform.transform.rotation);
         tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * 300);
         yield return new WaitForSeconds(2);
         StartCoroutine(Fire());
@@ -68,8 +67,8 @@ public class UfoRed : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AddScore(1000);
-        Score.aliensKilled++;
+        Score.AliensKilled++;
         Destroy(this.gameObject);
     }
-    void AddScore(int points) => Score.score += points;
+    void AddScore(int points) => Score.CurrentScore += points;
 }

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 public static class DBManager
 {
-    public static string username;
-    public static int scoreDB;
-    public static bool LoggedIn { get { return username != null; } }
+    public static string Username;
+    public static int ScoreDB;
+    public static bool LoggedIn { get { return Username != null; } }
     public static void LogOut()
     {
-        username = null;
+        Username = null;
     }
 }

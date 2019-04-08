@@ -95,9 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74780b3ad26a5da4fb70ea1b5d7a9a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 409009644563615770}
-  bullet: {fileID: 2570430661495081163, guid: 0893f6bc872f7804bbfd30ad35b13c24, type: 3}
-  bTransform: {fileID: 7218345314399696007}
+  _rb: {fileID: 409009644563615770}
+  _bullet: {fileID: 2570430661495081163, guid: 0893f6bc872f7804bbfd30ad35b13c24, type: 3}
+  _bTransform: {fileID: 7218345314399696007}
 --- !u!50 &409009644563615770
 Rigidbody2D:
   serializedVersion: 4

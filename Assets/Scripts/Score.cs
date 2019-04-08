@@ -3,38 +3,35 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     #region Principal
-    public static int score, highScore, totalPoints, aliensKilled;
+    public static int CurrentScore, CurrentHighScore, TotalPoints, AliensKilled;
     [SerializeField]
-    private Text txtScore, txtHighScore;
-    #endregion
-    #region Estatisticas
-
+    private Text _txtScore, _txtHighScore;
     #endregion
     private void Awake()
     {
         // Carrega os valores
-        highScore = PlayerPrefs.GetInt("highscores", highScore);
-        totalPoints = PlayerPrefs.GetInt("totalpoints", totalPoints);
+        CurrentHighScore = PlayerPrefs.GetInt("highscores", CurrentHighScore);
+        TotalPoints = PlayerPrefs.GetInt("totalpoints", TotalPoints);
     }
     private void Start()
     {
-        score = 0;
-        txtHighScore.text = Score.highScore.ToString();
+        CurrentScore = 0;
+        _txtHighScore.text = Score.CurrentHighScore.ToString();
     }
-    private void Update() => txtScore.text = score.ToString();
+    private void Update() => _txtScore.text = CurrentScore.ToString();
     public static void CheckHighScore()
     {
-        totalPoints += score;
-        if (score > Score.highScore)
-            Score.highScore = score;
+        TotalPoints += CurrentScore;
+        if (CurrentScore > Score.CurrentHighScore)
+            Score.CurrentHighScore = CurrentScore;
 
         SaveData();
     }
     public static void SaveData()
     {
-        PlayerPrefs.SetInt("highscores", highScore);
-        PlayerPrefs.SetInt("totalpoints", totalPoints);
-        PlayerPrefs.SetInt("alienskilled", aliensKilled);
+        PlayerPrefs.SetInt("highscores", CurrentHighScore);
+        PlayerPrefs.SetInt("totalpoints", TotalPoints);
+        PlayerPrefs.SetInt("alienskilled", AliensKilled);
 
     }
 }

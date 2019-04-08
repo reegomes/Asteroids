@@ -4,25 +4,26 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class HighScore : MonoBehaviour
 {
-    public Text playerDisplay, scoreDisplay, txtTotalPoints, txtaliesKilled;
+    [SerializeField]
+    private Text _playerDisplay, _scoreDisplay, _txtTotalPoints, _txtaliesKilled;
     private void Awake()
     {
-        playerDisplay.text = "Player: " + DBManager.username;
-        scoreDisplay.text = "Score: " + Score.highScore;
-        txtTotalPoints.text = "Meteors Destroyed: " + Score.totalPoints;
-        txtaliesKilled.text = "Killed Aliens: " + Score.aliensKilled;
-        DBManager.scoreDB = Score.highScore;
+        _playerDisplay.text = "Player: " + DBManager.Username;
+        _scoreDisplay.text = "Score: " + Score.CurrentHighScore;
+        _txtTotalPoints.text = "Meteors Destroyed: " + Score.TotalPoints;
+        _txtaliesKilled.text = "Killed Aliens: " + Score.AliensKilled;
+        DBManager.ScoreDB = Score.CurrentHighScore;
     }
     public void CallSaveData()
     {
-        DBManager.scoreDB = Score.highScore;
+        DBManager.ScoreDB = Score.CurrentHighScore;
         StartCoroutine(SavePlayerData());
     }
     IEnumerator SavePlayerData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", DBManager.username);
-        form.AddField("scoreDB", DBManager.scoreDB);
+        form.AddField("name", DBManager.Username);
+        form.AddField("scoreDB", DBManager.ScoreDB);
 
         WWW www = new WWW("https://citysleeping.000webhostapp.com/leaderboard.php", form);
         yield return www;

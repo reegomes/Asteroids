@@ -4,12 +4,12 @@ public class CamAspect : MonoBehaviour
     #region Controle de Camera
     // Cam
     [SerializeField]
-    public static Camera cam;
+    public static Camera _cam;
     public float ScreenSizeX;
     #endregion
     public void CamStart()
     {
-        cam = Camera.main;
-        ScreenSizeX = cam.orthographicSize * cam.aspect;
+        _cam = Camera.main;
+        ScreenSizeX = _cam.orthographicSize * _cam.aspect;
     }
 }

@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20537957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98, y: 1.58, z: 0}
+  m_LocalPosition: {x: -11.57, y: 1.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1919791349}
@@ -324,7 +324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215830093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.97, y: 4.3, z: 0}
+  m_LocalPosition: {x: -11.51, y: 4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1919791349}
@@ -638,9 +638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 334746249}
-  click: {fileID: 334746248}
-  pausePanel: {fileID: 0}
+  _over: {fileID: 334746249}
+  _click: {fileID: 334746248}
+  _pausePanel: {fileID: 0}
 --- !u!114 &334746251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,9 +1143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 467493424}
-  click: {fileID: 467493423}
-  pausePanel: {fileID: 1570234472}
+  _over: {fileID: 467493424}
+  _click: {fileID: 467493423}
+  _pausePanel: {fileID: 1570234472}
 --- !u!114 &467493426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,9 +1689,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 559814326}
-  click: {fileID: 559814325}
-  pausePanel: {fileID: 0}
+  _over: {fileID: 559814326}
+  _click: {fileID: 559814325}
+  _pausePanel: {fileID: 0}
 --- !u!1 &644073455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7514398475127534533, guid: d4c806289cb63f247be1459f499e7fcf,
@@ -1959,7 +1959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955286213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.5, y: 0, z: 0}
+  m_LocalPosition: {x: -11.49, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1919791349}
@@ -2358,7 +2358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375361945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.01, y: -4.72, z: 0}
+  m_LocalPosition: {x: -11.44, y: -4.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1919791349}
@@ -2429,23 +2429,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8a25ecbebeb294083fb91230457797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorPrefab: {fileID: 6775036009015066265, guid: 1193a193bbb3cad4f9729564d0b7f54d,
+  _meteorPrefab: {fileID: 6775036009015066265, guid: 1193a193bbb3cad4f9729564d0b7f54d,
     type: 3}
-  mediumMeteorPrefab: {fileID: 6775036009015066265, guid: e95f88d8f10af6743b458ac84b18533e,
+  _mediumMeteorPrefab: {fileID: 6775036009015066265, guid: e95f88d8f10af6743b458ac84b18533e,
     type: 3}
-  smallMeteorPrefab: {fileID: 6775036009015066265, guid: 1fa921615984411489c113e8ea36f269,
+  _smallMeteorPrefab: {fileID: 6775036009015066265, guid: 1fa921615984411489c113e8ea36f269,
     type: 3}
-  meteorsToSpawn: 30
-  spawners:
-  - {fileID: 328289364}
-  - {fileID: 1289856411}
-  - {fileID: 1422727650}
-  - {fileID: 1195655445}
-  - {fileID: 2072521163}
-  - {fileID: 324998992}
-  meteorsList: []
-  mediumMeteorsList: []
-  smallMeteorsList: []
+  _spawners:
+  - {fileID: 1692518559}
+  - {fileID: 955286213}
+  - {fileID: 1984734111}
+  - {fileID: 1182637386}
+  - {fileID: 1015079152}
+  - {fileID: 1932353484}
+  _meteorsList: []
+  _mediumMeteorsList: []
+  _smallMeteorsList: []
 --- !u!4 &1428794567
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,7 +2506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f23e9cbad8fd6047a154e3525fd32e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifes:
+  _lifes:
   - {fileID: 1348485515}
   - {fileID: 1941225905}
   - {fileID: 444304155}
@@ -2813,9 +2812,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 1588442695}
-  click: {fileID: 1588442694}
-  pausePanel: {fileID: 0}
+  _over: {fileID: 1588442695}
+  _click: {fileID: 1588442694}
+  _pausePanel: {fileID: 0}
 --- !u!82 &1588442694
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3039,8 +3038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3b418c3a8e61d45ae378f4d9553c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtScore: {fileID: 1585894718}
-  txtHighScore: {fileID: 25747895}
+  _txtScore: {fileID: 1585894718}
+  _txtHighScore: {fileID: 25747895}
 --- !u!4 &1615413066
 Transform:
   m_ObjectHideFlags: 0
@@ -3367,13 +3366,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e631034f82b5b1c40a301298110052f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1804043045}
-  sDeath: {fileID: 1804043051}
-  sDamage: {fileID: 1804043050}
-  gameOver: {fileID: 1570234472}
-  shield: {fileID: 0}
-  sptRender: {fileID: 1804043046}
-  col: {fileID: 1804043049}
+  _rb: {fileID: 1804043045}
+  _sDeath: {fileID: 1804043051}
+  _sDamage: {fileID: 1804043050}
+  _gameOver: {fileID: 1570234472}
+  _shield: {fileID: 0}
+  _sptRender: {fileID: 1804043046}
+  _col: {fileID: 1804043049}
 --- !u!60 &1804043049
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3626,13 +3625,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a98cee615c47b4dbff3f09a88215ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1804043045}
-  bullet: {fileID: 6575858824443177634, guid: cd4ea12456230c04c99eaa2f843e1703, type: 3}
-  bTransform: {fileID: 794507974}
-  rocket: {fileID: 644073455}
-  control:
+  _rb: {fileID: 1804043045}
+  _bullet: {fileID: 6575858824443177634, guid: cd4ea12456230c04c99eaa2f843e1703, type: 3}
+  _bTransform: {fileID: 794507974}
+  _rocket: {fileID: 644073455}
+  _control:
     m_Asset: {fileID: 11400000, guid: 956e7d4af640d734b8d083659cc39e38, type: 3}
-  up:
+  _up:
     m_Name: Up
     m_ExpectedControlLayout: 
     m_Id: 
@@ -3661,7 +3660,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Up
       m_Flags: 0
-  right:
+  _right:
     m_Name: Right
     m_ExpectedControlLayout: 
     m_Id: 
@@ -3690,7 +3689,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Right
       m_Flags: 0
-  left:
+  _left:
     m_Name: Left
     m_ExpectedControlLayout: 
     m_Id: 
@@ -3836,24 +3835,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7191202b054619840a606c91f2b3bca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  control:
+  _control:
     m_Asset: {fileID: 11400000, guid: 956e7d4af640d734b8d083659cc39e38, type: 3}
-  tab:
-    m_Name: Tab
-    m_ExpectedControlLayout: 
-    m_Id: 
-    m_Flags: 0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Path: <Keyboard>/tab
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Tab
-      m_Flags: 0
-  escape:
+  _escape:
     m_Name: Escape
     m_ExpectedControlLayout: 
     m_Id: 
@@ -3868,24 +3852,9 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Escape
       m_Flags: 0
-  returnKey:
-    m_Name: Return Key
-    m_ExpectedControlLayout: 
-    m_Id: 
-    m_Flags: 0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Path: <Keyboard>/enter
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Return Key
-      m_Flags: 0
-  txtPause: {fileID: 388246629}
-  btnTxt: {fileID: 524857969}
-  pausePanel: {fileID: 1570234472}
+  _txtPause: {fileID: 388246629}
+  _btnTxt: {fileID: 524857969}
+  _pausePanel: {fileID: 1570234472}
 --- !u!1 &1908630452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,7 +3879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908630452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98, y: -1.67, z: 0}
+  m_LocalPosition: {x: -11.68, y: -1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1919791349}
@@ -4090,15 +4059,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f519d603e6f910d408bb1c65c9f59500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ufos:
+  _ufos:
   - {fileID: 5070166382464142502, guid: 86445cb5eadbced4f89e013c17cf311f, type: 3}
   - {fileID: 4351919682135389161, guid: 8c0ee245f1b7c1f4fa2f5f43add33266, type: 3}
-  ufoSpawners:
+  _ufoSpawners:
   - {fileID: 215830093}
   - {fileID: 20537957}
   - {fileID: 1908630452}
   - {fileID: 1375361945}
-  spawn: 0
+  _spawn: 0
 --- !u!4 &1947458071
 Transform:
   m_ObjectHideFlags: 0

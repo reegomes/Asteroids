@@ -4,51 +4,49 @@ public class Player : MonoBehaviour
 {
     #region Rigidbody
     [SerializeField]
-    Rigidbody2D rb;
+    private Rigidbody2D _rb;
     #endregion
     #region Status da vida
-    [SerializeField]
-    public static bool isAlive;
-    //Joysticks joy = new Joysticks();
+    public static bool IsAlive;
     #endregion
     #region Controle de Camera
     CamAspect camAsp = new CamAspect();
     #endregion
     #region Score, danos e etc
     [SerializeField]
-    public static int life;
-    private float impact;
+    public static int Life;
+    private float _impact;
     [SerializeField]
-    private AudioSource sDeath, sDamage;
+    private AudioSource _sDeath, _sDamage;
     [SerializeField]
-    private GameObject gameOver, shield;
+    private GameObject _gameOver, _shield;
     [SerializeField]
-    SpriteRenderer sptRender;
+    private SpriteRenderer _sptRender;
     [SerializeField]
-    Collider2D col;
+    private Collider2D _col;
     #endregion
     void Start()
     {
         // Vidas
-        life = 3;
+        Life = 3;
         // Força do impactor
-        impact = 3;
+        _impact = 3;
         // Instanciação da Camera
         camAsp.CamStart();
         // Inicia vivo
-        isAlive = true;
+        IsAlive = true;
     }
     void Update()
     {
         // Inputs
-        if (isAlive)
+        if (IsAlive)
         {
             // Controle de posicionamento
             Vector2 newPos = this.transform.position;
-            if (this.transform.position.y > CamAspect.cam.orthographicSize + 1)
-                newPos.y = -CamAspect.cam.orthographicSize;
-            if (transform.position.y < -CamAspect.cam.orthographicSize - 1)
-                newPos.y = CamAspect.cam.orthographicSize;
+            if (this.transform.position.y > CamAspect._cam.orthographicSize + 1)
+                newPos.y = -CamAspect._cam.orthographicSize;
+            if (transform.position.y < -CamAspect._cam.orthographicSize - 1)
+                newPos.y = CamAspect._cam.orthographicSize;
             if (transform.position.x > camAsp.ScreenSizeX + 1)
                 newPos.x = -camAsp.ScreenSizeX;
             if (transform.position.x < -camAsp.ScreenSizeX - 1)
@@ -59,43 +57,43 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.magnitude > impact)
+        if (collision.relativeVelocity.magnitude > _impact)
         {
-            isAlive = false;
-            if (life == 0)
+            IsAlive = false;
+            if (Life == 0)
             {
-                col.enabled = false;
-                sptRender.enabled = false;
-                sDeath.Play();
+                _col.enabled = false;
+                _sptRender.enabled = false;
+                _sDeath.Play();
                 Score.CheckHighScore();
                 GameOver();
             }
             else
             {
                 LifesUI.RemoveLife();
-                col.enabled = false;
-                sptRender.enabled = false;
+                _col.enabled = false;
+                _sptRender.enabled = false;
                 TakeDamage(1);
-                sDamage.Play();
+                _sDamage.Play();
                 StartCoroutine(Respawn());
             }
         }
     }
-    void TakeDamage(int damage) => life -= damage;
-    void GameOver() => gameOver.SetActive(true);
+    void TakeDamage(int damage) => Life -= damage;
+    void GameOver() => _gameOver.SetActive(true);
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(3f);
-        rb.velocity = Vector2.zero;
+        _rb.velocity = Vector2.zero;
         transform.position = Vector2.zero;
-        sptRender.enabled = true;
+        _sptRender.enabled = true;
         transform.Rotate(Vector2.zero);
-        isAlive = true;
+        IsAlive = true;
         StartCoroutine(Immortality());
     }
     IEnumerator Immortality()
     {
         yield return new WaitForSeconds(3f);
-        col.enabled = true;
+        _col.enabled = true;
     }
 }

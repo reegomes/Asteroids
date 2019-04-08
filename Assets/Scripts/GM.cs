@@ -19,53 +19,58 @@ public class GM : MonoBehaviour
     }
     #endregion
     #region Pause Global
-    public static bool isPause { get; set; }
+    public static bool IsPause { get; set; }
     #endregion
     #region Instanciação dos meteoros
-    public GameObject meteorPrefab, mediumMeteorPrefab, smallMeteorPrefab;
-    public int meteorsToSpawn = 30;
-    public GameObject[] spawners;
-    public List<GameObject> meteorsList = new List<GameObject>();
-    public List<GameObject> mediumMeteorsList = new List<GameObject>();
-    public List<GameObject> smallMeteorsList = new List<GameObject>();
+    [SerializeField]
+    private GameObject _meteorPrefab, _mediumMeteorPrefab, _smallMeteorPrefab;
+    private int _meteorsToSpawn = 30;
+    [SerializeField]
+    private GameObject[] _spawners;
+    [SerializeField]
+    private List<GameObject> _meteorsList = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> _mediumMeteorsList = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> _smallMeteorsList = new List<GameObject>();
     #endregion
     private void Awake() => _instance = this;
     private void Start()
     {
-        isPause = false;
-        for (int i = 0; i < meteorsToSpawn; i++)
+        IsPause = false;
+        for (int i = 0; i < _meteorsToSpawn; i++)
         {
-            int metSpawnSelected = Random.Range(0, spawners.Length);
+            int metSpawnSelected = Random.Range(0, _spawners.Length);
 
             // Container grande
-            GameObject meteors = Instantiate(meteorPrefab, spawners[metSpawnSelected].transform.position, Quaternion.identity) as GameObject;
-            meteors.transform.parent = spawners[metSpawnSelected].transform;
+            GameObject meteors = Instantiate(_meteorPrefab, _spawners[metSpawnSelected].transform.position, Quaternion.identity) as GameObject;
+            meteors.transform.parent = _spawners[metSpawnSelected].transform;
             meteors.SetActive(false);
-            meteorsList.Add(meteors);
+            _meteorsList.Add(meteors);
             // Container médio
-            GameObject mediumMeteors = Instantiate(mediumMeteorPrefab, spawners[metSpawnSelected].transform.position, Quaternion.identity) as GameObject;
-            mediumMeteors.transform.parent = spawners[metSpawnSelected].transform;
+            GameObject mediumMeteors = Instantiate(_mediumMeteorPrefab, _spawners[metSpawnSelected].transform.position, Quaternion.identity) as GameObject;
+            mediumMeteors.transform.parent = _spawners[metSpawnSelected].transform;
             mediumMeteors.SetActive(false);
-            mediumMeteorsList.Add(mediumMeteors);
+            _mediumMeteorsList.Add(mediumMeteors);
             // Container pequeno
-            GameObject smallMeteors = Instantiate(smallMeteorPrefab, spawners[metSpawnSelected].transform.position, Quaternion.identity) as GameObject;
-            smallMeteors.transform.parent = spawners[metSpawnSelected].transform;
+            GameObject smallMeteors = Instantiate(_smallMeteorPrefab, _spawners[metSpawnSelected].transform.position, Quaternion.identity) as GameObject;
+            smallMeteors.transform.parent = _spawners[metSpawnSelected].transform;
             smallMeteors.SetActive(false);
-            smallMeteorsList.Add(smallMeteors);
+            _smallMeteorsList.Add(smallMeteors);
         }
         StartCoroutine(SpawnInstance(5));
     }
     public IEnumerator SpawnInstance(int timing)
     {
         yield return new WaitForSeconds(timing);
-        if (MeteorController.metNumOnScreen <= 9)
+        if (MeteorController.MetNumOnScreen <= 9)
         {
-            MeteorController.totalMet++;
-            for (int i = 0; i < GM.Instance.meteorsList.Count; i++)
+            MeteorController.TotalMet++;
+            for (int i = 0; i < GM.Instance._meteorsList.Count; i++)
             {
-                if (GM.Instance.meteorsList[i].activeInHierarchy == false)
+                if (GM.Instance._meteorsList[i].activeInHierarchy == false)
                 {
-                    GM.Instance.meteorsList[i].SetActive(true);
+                    GM.Instance._meteorsList[i].SetActive(true);
                     break;
                 }
             }
@@ -80,17 +85,17 @@ public class GM : MonoBehaviour
     {
         if (a == 1)
         {
-            if (MeteorController.metNumOnScreen <= 40)
+            if (MeteorController.MetNumOnScreen <= 40)
             {
-                MeteorController.totalMet++;
-                for (int i = 0; i < GM.Instance.mediumMeteorsList.Count; i++)
+                MeteorController.TotalMet++;
+                for (int i = 0; i < GM.Instance._mediumMeteorsList.Count; i++)
                 {
-                    if (GM.Instance.mediumMeteorsList[i].activeInHierarchy == false)
+                    if (GM.Instance._mediumMeteorsList[i].activeInHierarchy == false)
                     {
-                        GM.Instance.mediumMeteorsList[i].transform.position = position;
-                        GM.Instance.mediumMeteorsList[i].SetActive(true);
-                        GM.Instance.mediumMeteorsList[i + 1].transform.position = position;
-                        GM.Instance.mediumMeteorsList[i + 1].SetActive(true);
+                        GM.Instance._mediumMeteorsList[i].transform.position = position;
+                        GM.Instance._mediumMeteorsList[i].SetActive(true);
+                        GM.Instance._mediumMeteorsList[i + 1].transform.position = position;
+                        GM.Instance._mediumMeteorsList[i + 1].SetActive(true);
                         break;
                     }
                 }
@@ -103,17 +108,17 @@ public class GM : MonoBehaviour
         }
         else if (a == 2)
         {
-            if (MeteorController.metNumOnScreen <= 40)
+            if (MeteorController.MetNumOnScreen <= 40)
             {
-                MeteorController.totalMet++;
-                for (int i = 0; i < GM.Instance.smallMeteorsList.Count; i++)
+                MeteorController.TotalMet++;
+                for (int i = 0; i < GM.Instance._smallMeteorsList.Count; i++)
                 {
-                    if (GM.Instance.smallMeteorsList[i].activeInHierarchy == false)
+                    if (GM.Instance._smallMeteorsList[i].activeInHierarchy == false)
                     {
-                        GM.Instance.smallMeteorsList[i].transform.position = position;
-                        GM.Instance.smallMeteorsList[i].SetActive(true);
-                        GM.Instance.smallMeteorsList[i + 1].transform.position = position;
-                        GM.Instance.smallMeteorsList[i + 1].SetActive(true);
+                        GM.Instance._smallMeteorsList[i].transform.position = position;
+                        GM.Instance._smallMeteorsList[i].SetActive(true);
+                        GM.Instance._smallMeteorsList[i + 1].transform.position = position;
+                        GM.Instance._smallMeteorsList[i + 1].SetActive(true);
                         break;
                     }
                 }

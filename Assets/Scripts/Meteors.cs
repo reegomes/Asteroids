@@ -4,59 +4,59 @@ public class Meteors : MonoBehaviour
 {
     #region Geracao e opcoes dos meteoros
     [SerializeField]
-    private SpriteAtlas atlas;
+    private SpriteAtlas _atlas;
     [SerializeField]
-    SpriteRenderer meteorRenderer;
-    public byte meteorSize;
+    private SpriteRenderer _meteorRenderer;
+    public byte MeteorSize;
     #endregion
     private void OnEnable()
     {
         //Selecão de Sprites
-        if (meteorSize == 1)
+        if (MeteorSize == 1)
         {
             MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(0, 3);
-            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+            this._meteorRenderer.sprite = _atlas.GetSprite(brownRnd.ToString());
         }
-        else if (meteorSize == 2)
+        else if (MeteorSize == 2)
         {
             MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(4, 5);
-            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+            this._meteorRenderer.sprite = _atlas.GetSprite(brownRnd.ToString());
         }
-        else if (meteorSize == 3)
+        else if (MeteorSize == 3)
         {
             MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(6, 7);
-            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+            this._meteorRenderer.sprite = _atlas.GetSprite(brownRnd.ToString());
         }
-        else if (meteorSize == 4)
+        else if (MeteorSize == 4)
         {
             MeteorsBrown brownRnd = (MeteorsBrown)Random.Range(8, 9);
-            this.meteorRenderer.sprite = atlas.GetSprite(brownRnd.ToString());
+            this._meteorRenderer.sprite = _atlas.GetSprite(brownRnd.ToString());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(collision.gameObject);
-        if (this.meteorSize == 1)
+        if (this.MeteorSize == 1)
         {
             AddScore(100);
-            MeteorController.metNumOnScreen--;
-            StartCoroutine(GM.Instance.SpawnInstance(1, meteorSize, this.transform.position));
+            MeteorController.MetNumOnScreen--;
+            StartCoroutine(GM.Instance.SpawnInstance(1, MeteorSize, this.transform.position));
             OnDisable();
         }
-        else if (this.meteorSize == 2)
+        else if (this.MeteorSize == 2)
         {
             AddScore(250);
-            MeteorController.metNumOnScreen--;
-            StartCoroutine(GM.Instance.SpawnInstance(1, meteorSize, this.transform.position));
+            MeteorController.MetNumOnScreen--;
+            StartCoroutine(GM.Instance.SpawnInstance(1, MeteorSize, this.transform.position));
             OnDisable();
         }
-        else if (this.meteorSize == 3)
+        else if (this.MeteorSize == 3)
         {
             AddScore(500);
-            MeteorController.metNumOnScreen--;
+            MeteorController.MetNumOnScreen--;
             OnDisable();
         }
-        else if (this.meteorSize == 4)
+        else if (this.MeteorSize == 4)
         {
             // Muito dificil acertar, mas quem sabe num modo insano
             //AddScore(1500);
@@ -65,5 +65,5 @@ public class Meteors : MonoBehaviour
         }
     }
     private void OnDisable() => this.gameObject.SetActive(false);
-    void AddScore(int points) => Score.score += points;
+    void AddScore(int points) => Score.CurrentScore += points;
 }

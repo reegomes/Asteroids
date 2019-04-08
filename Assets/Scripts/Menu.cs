@@ -4,20 +4,20 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     [SerializeField]
-    private Button registerButton, loginButton;
+    private Button _registerButton, _loginButton;
     [SerializeField]
-    private Text txtOffline;
-    public static bool isLogged;
+    private Text _txtOffline;
+    public static bool IsLogged;
     private void Start()
     {
-        if (isLogged == true)
+        if (IsLogged == true)
         {
-            registerButton.interactable = false;
-            loginButton.interactable = false;
-            txtOffline.text = "Play Asteroids";
+            _registerButton.interactable = false;
+            _loginButton.interactable = false;
+            _txtOffline.text = "Play Asteroids";
         }
         else
-            txtOffline.text = "Play Offline";
+            _txtOffline.text = "Play Offline";
     }
     public void GoToRegister() => SceneManager.LoadScene(1);
     public void GoToLogin() => SceneManager.LoadScene(2);

@@ -388,9 +388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48a12719bd8ad341a763d9a0883ce6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  registerButton: {fileID: 944828813}
-  loginButton: {fileID: 818591580}
-  txtOffline: {fileID: 1979445535}
+  _registerButton: {fileID: 944828813}
+  _loginButton: {fileID: 818591580}
+  _txtOffline: {fileID: 1979445535}
 --- !u!114 &649731278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,8 +723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 818591585}
-  click: {fileID: 818591583}
+  _over: {fileID: 818591585}
+  _click: {fileID: 818591583}
+  _pausePanel: {fileID: 0}
 --- !u!82 &818591585
 AudioSource:
   m_ObjectHideFlags: 0
@@ -966,8 +967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 859577535}
-  click: {fileID: 859577534}
+  _over: {fileID: 859577535}
+  _click: {fileID: 859577534}
+  _pausePanel: {fileID: 0}
 --- !u!82 &859577534
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1305,7 +1307,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243807578405692790, guid: e4c4731abd0486346aa3e477e946ebb4,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e59c63db0a850154d96387745fb721ec, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1403,8 +1405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 818591585}
-  click: {fileID: 944828816}
+  _over: {fileID: 944828818}
+  _click: {fileID: 944828816}
+  _pausePanel: {fileID: 0}
 --- !u!82 &944828818
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2172,8 +2175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 818591585}
-  click: {fileID: 818591583}
+  _over: {fileID: 1842053709}
+  _click: {fileID: 1842053707}
+  _pausePanel: {fileID: 0}
 --- !u!82 &1842053709
 AudioSource:
   m_ObjectHideFlags: 0

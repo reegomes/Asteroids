@@ -583,7 +583,6 @@ GameObject:
   - component: {fileID: 649731274}
   - component: {fileID: 649731273}
   - component: {fileID: 649731277}
-  - component: {fileID: 649731278}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -687,57 +686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf7860166044804e841c2b2b2de2399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameField: {fileID: 1369362748}
-  passwordField: {fileID: 601468912}
-  submitButton: {fileID: 944828813}
---- !u!114 &649731278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649731272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7191202b054619840a606c91f2b3bca5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  control:
-    m_Asset: {fileID: 0}
-  tab:
-    m_Name: Tab
-    m_ExpectedControlLayout: 
-    m_Id: 
-    m_Flags: 0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Path: <Keyboard>/tab
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Tab
-      m_Flags: 0
-  escape:
-    m_Name: Escape
-    m_ExpectedControlLayout: 
-    m_Id: 
-    m_Flags: 0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  returnKey:
-    m_Name: Return Key
-    m_ExpectedControlLayout: 
-    m_Id: 
-    m_Flags: 0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  txtPause: {fileID: 0}
-  btnTxt: {fileID: 0}
-  pausePanel: {fileID: 0}
+  _nameField: {fileID: 1369362748}
+  _passwordField: {fileID: 601468912}
+  _submitButton: {fileID: 944828813}
 --- !u!1 &782606641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,9 +991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639f9c03ce91604d8d17ae61e199882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  over: {fileID: 944828818}
-  click: {fileID: 944828817}
-  pausePanel: {fileID: 0}
+  _over: {fileID: 944828818}
+  _click: {fileID: 944828817}
+  _pausePanel: {fileID: 0}
 --- !u!82 &944828817
 AudioSource:
   m_ObjectHideFlags: 0

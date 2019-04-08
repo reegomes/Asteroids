@@ -2,9 +2,9 @@
 public class MeteorScript : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float _speed;
     [SerializeField]
-    Rigidbody2D rb;
+    private Rigidbody2D _rb;
     CamAspect camAsp = new CamAspect();
     private void OnEnable()
     {
@@ -12,22 +12,22 @@ public class MeteorScript : MonoBehaviour
         camAsp.CamStart();
 
         // Controles de velocidade e rotacao
-        speed = Random.Range(1, 10);
+        _speed = Random.Range(1, 10);
         Vector2 rotation = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
-        rb.AddForce(rotation);
-        rb.AddTorque(speed);
+        _rb.AddForce(rotation);
+        _rb.AddTorque(_speed);
 
         // Adiciona o numero de meteoros no controlador
-        MeteorController.metNumOnScreen++;
+        MeteorController.MetNumOnScreen++;
     }
     void Update()
     {
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
-        if (this.transform.position.y > CamAspect.cam.orthographicSize + 1)
-            newPos.y = -CamAspect.cam.orthographicSize;
-        if (transform.position.y < -CamAspect.cam.orthographicSize - 1)
-            newPos.y = CamAspect.cam.orthographicSize;
+        if (this.transform.position.y > CamAspect._cam.orthographicSize + 1)
+            newPos.y = -CamAspect._cam.orthographicSize;
+        if (transform.position.y < -CamAspect._cam.orthographicSize - 1)
+            newPos.y = CamAspect._cam.orthographicSize;
         if (transform.position.x > camAsp.ScreenSizeX + 1)
             newPos.x = -camAsp.ScreenSizeX;
         if (transform.position.x < -camAsp.ScreenSizeX - 1)
