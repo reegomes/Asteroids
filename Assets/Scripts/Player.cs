@@ -6,19 +6,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
     #endregion
-    #region Variaveis de controle
+    #region Status da vida
     [SerializeField]
-    private bool isAlive;
-    Joysticks joy = new Joysticks();
+    public static bool isAlive;
+    //Joysticks joy = new Joysticks();
     #endregion
     #region Controle de Camera
     CamAspect camAsp = new CamAspect();
-    #endregion
-    #region Tiros
-    [SerializeField]
-    GameObject bullet;
-    [SerializeField]
-    GameObject bTransform;
     #endregion
     #region Score, danos e etc
     [SerializeField]
@@ -27,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioSource sDeath, sDamage;
     [SerializeField]
-    private GameObject rocket, gameOver;
+    private GameObject gameOver, shield;
     [SerializeField]
     SpriteRenderer sptRender;
     [SerializeField]
@@ -49,13 +43,6 @@ public class Player : MonoBehaviour
         // Inputs
         if (isAlive)
         {
-            // Não instanciar tiros ou sons durante o pause
-            if (!GM.isPause)
-            {
-                joy.InputJoy();
-                StartCoroutine(CdFire());
-            }
-
             // Controle de posicionamento
             Vector2 newPos = this.transform.position;
             if (this.transform.position.y > CamAspect.cam.orthographicSize + 1)
@@ -69,23 +56,7 @@ public class Player : MonoBehaviour
 
             transform.position = newPos;
         }
-
-        // Efeito do propulsor
-        if (Joysticks.Vertical > 0 && isAlive == true && GM.isPause == false)
-        {
-            rocket.SetActive(true);
-        }
-        else
-        {
-            rocket.SetActive(false);
-        }
     }
-    void FixedUpdate()
-    {
-        rb.AddRelativeForce(Vector2.up * Joysticks.Vertical);
-        transform.Rotate(Vector3.forward * Joysticks.Horizontal * Time.deltaTime * -100);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.relativeVelocity.magnitude > impact)
@@ -112,11 +83,6 @@ public class Player : MonoBehaviour
     }
     void TakeDamage(int damage) => life -= damage;
     void GameOver() => gameOver.SetActive(true);
-    IEnumerator CdFire()
-    {
-        joy.Fire(bullet, bTransform.transform);
-        yield return new WaitForSeconds(1f);
-    }
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(3f);

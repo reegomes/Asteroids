@@ -9,11 +9,6 @@ public class Register : MonoBehaviour
     private InputField nameField, passwordField;
     [SerializeField]
     private Button submitButton;
-    private void Update()
-    {
-        if (nameField.isFocused && Input.GetKeyDown(KeyCode.Tab))
-            passwordField.ActivateInputField();
-    }
     public void CallRegister()
     {
         StartCoroutine(RegisterCo());

@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LeaderBoards.unity
     guid: 496b20b5f7b257f478fb20e0f85b43d6
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 75b5920019cb88343b115acdf817472d,
+      type: 2}

@@ -76,7 +76,6 @@ public class GM : MonoBehaviour
             StartCoroutine(SpawnInstance(timing));
         }
     }
-    //Instanciar os meteoros menores
     public IEnumerator SpawnInstance(int timing, int a, Vector2 position)
     {
         if (a == 1)
