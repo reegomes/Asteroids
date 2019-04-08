@@ -8,9 +8,8 @@ public class Meteors : MonoBehaviour
     [SerializeField]
     SpriteRenderer meteorRenderer;
     public byte meteorSize;
-    Rigidbody2D rb;
     #endregion
-    private void Start()
+    private void OnEnable()
     {
         //Selecão de Sprites
         if (meteorSize == 1)
@@ -41,7 +40,6 @@ public class Meteors : MonoBehaviour
         {
             AddScore(100);
             MeteorController.metNumOnScreen--;
-
             StartCoroutine(GM.Instance.SpawnInstance(1, meteorSize, this.transform.position));
             OnDisable();
         }
@@ -49,7 +47,6 @@ public class Meteors : MonoBehaviour
         {
             AddScore(250);
             MeteorController.metNumOnScreen--;
-
             StartCoroutine(GM.Instance.SpawnInstance(1, meteorSize, this.transform.position));
             OnDisable();
         }
@@ -57,7 +54,6 @@ public class Meteors : MonoBehaviour
         {
             AddScore(500);
             MeteorController.metNumOnScreen--;
-
             OnDisable();
         }
         else if (this.meteorSize == 4)

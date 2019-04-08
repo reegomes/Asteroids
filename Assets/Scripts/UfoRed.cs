@@ -68,7 +68,7 @@ public class UfoRed : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AddScore(1000);
-        //LifesUI.AddLife();
+        Score.aliensKilled++;
         Destroy(this.gameObject);
     }
     void AddScore(int points) => Score.score += points;

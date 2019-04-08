@@ -6,8 +6,7 @@ public class MeteorScript : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
     CamAspect camAsp = new CamAspect();
-    private void OnEnable() => Start();
-    void Start()
+    private void OnEnable()
     {
         // Instanciação da Camera
         camAsp.CamStart();

@@ -10,13 +10,8 @@ public class HighScore : MonoBehaviour
         playerDisplay.text = "Player: " + DBManager.username;
         scoreDisplay.text = "Score: " + Score.highScore;
         txtTotalPoints.text = "Meteors Destroyed: " + Score.totalPoints;
-        txtaliesKilled.text = "Killed Aliens: " + Score.aliesKilled;
+        txtaliesKilled.text = "Killed Aliens: " + Score.aliensKilled;
         DBManager.scoreDB = Score.highScore;
-    }
-    private void Start()
-    {
-        print(DBManager.username);
-        print(DBManager.scoreDB);
     }
     public void CallSaveData()
     {
@@ -32,14 +27,8 @@ public class HighScore : MonoBehaviour
         WWW www = new WWW("https://citysleeping.000webhostapp.com/leaderboard.php", form);
         yield return www;
         if (www.text == "0")
-        {
-            Debug.Log("Submit.");
             SceneManager.LoadScene(0);
-        }
-        else
-        {
-            Debug.Log("Save failed. Error #" + www.text);
-        }
+
         DBManager.LogOut();
     }
 }

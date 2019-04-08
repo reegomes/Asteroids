@@ -8,10 +8,7 @@ public class Top : MonoBehaviour
     private string[] rank;
     [SerializeField]
     private Text txtTop;
-    private void Start()
-    {
-        StartCoroutine(GetText());
-    }
+    private void Start() => StartCoroutine(GetText());
     IEnumerator GetText()
     {
         using (UnityWebRequest www = UnityWebRequest.Get("http://citysleeping.000webhostapp.com/Ranking.php"))

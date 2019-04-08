@@ -35,10 +35,6 @@ public class Login : MonoBehaviour
             Menu.isLogged = true;
             SceneManager.LoadScene(0);
         }
-        else
-        {
-            Debug.Log("User login failed. Error #" + www.text);
-        }
     }
     public void VerifyInputs() => submitButton.interactable = (nameField.text.Length >= 3 && passwordField.text.Length >= 3);
 }

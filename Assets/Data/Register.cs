@@ -28,15 +28,7 @@ public class Register : MonoBehaviour
         yield return www;
 
         if (www.text == "0")
-        {
-            // apagar o debug
-            Debug.Log("Success");
             SceneManager.LoadScene(0);
-        }
-        else
-        {
-            Debug.Log("User creation failed. Error #" + www.text);
-        }
     }
     public void VerifyInputs() => submitButton.interactable = (nameField.text.Length >= 3 && passwordField.text.Length >= 3);
 }

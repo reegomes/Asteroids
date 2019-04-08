@@ -57,9 +57,8 @@ public class GM : MonoBehaviour
     }
     public IEnumerator SpawnInstance(int timing)
     {
-        Debug.Log("Spawn Iniciado");
         yield return new WaitForSeconds(timing);
-        if (MeteorController.metNumOnScreen <= 19)
+        if (MeteorController.metNumOnScreen <= 9)
         {
             MeteorController.totalMet++;
             for (int i = 0; i < GM.Instance.meteorsList.Count; i++)
@@ -82,8 +81,7 @@ public class GM : MonoBehaviour
     {
         if (a == 1)
         {
-            Debug.Log("Spawn médio iniciado");
-            if (MeteorController.metNumOnScreen <= 30)
+            if (MeteorController.metNumOnScreen <= 40)
             {
                 MeteorController.totalMet++;
                 for (int i = 0; i < GM.Instance.mediumMeteorsList.Count; i++)
@@ -106,8 +104,7 @@ public class GM : MonoBehaviour
         }
         else if (a == 2)
         {
-            Debug.Log("Spawn pequeno iniciado");
-            if (MeteorController.metNumOnScreen <= 30)
+            if (MeteorController.metNumOnScreen <= 40)
             {
                 MeteorController.totalMet++;
                 for (int i = 0; i < GM.Instance.smallMeteorsList.Count; i++)

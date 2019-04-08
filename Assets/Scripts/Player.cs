@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     #endregion
     #region Score, danos e etc
     [SerializeField]
-    public static int life = 3;
+    public static int life;
     private float impact;
     [SerializeField]
     private AudioSource sDeath, sDamage;
@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     #endregion
     void Start()
     {
+        // Vidas
+        life = 3;
         // Força do impactor
         impact = 3;
         // Instanciação da Camera
@@ -108,14 +110,8 @@ public class Player : MonoBehaviour
             }
         }
     }
-    void TakeDamage(int damage)
-    {
-        life -= damage;
-    }
-    void GameOver()
-    {
-        gameOver.SetActive(true);
-    }
+    void TakeDamage(int damage) => life -= damage;
+    void GameOver() => gameOver.SetActive(true);
     IEnumerator CdFire()
     {
         joy.Fire(bullet, bTransform.transform);

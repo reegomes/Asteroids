@@ -39,6 +39,7 @@ public class UfoScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Score.aliensKilled++;
         AddScore(100);
         Destroy(this.gameObject);
     }
