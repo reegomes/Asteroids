@@ -7,8 +7,14 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     private AudioSource _over, _click;
     [SerializeField]
     private GameObject _pausePanel;
-    public void OnPointerEnter(PointerEventData eventData) => _over.Play();
-    public void OnPointerClick(PointerEventData eventData) => _click.Play();
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _over.Play();
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        _click.Play();
+    }
     public void Restart()
     {
         Time.timeScale = 1;
@@ -16,11 +22,20 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     }
     public void Resume()
     {
-        GM.IsPause = false;
+        GameManager.IsPause = false;
         Time.timeScale = 1;
         _pausePanel.SetActive(false);
     }
-    public void GoToMainMenu() => SceneManager.LoadScene(sceneBuildIndex: 0);
-    public void GoToLeaderBoards() => SceneManager.LoadScene(sceneBuildIndex: 4);
-    public void QuitGame() => Application.Quit();
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(sceneBuildIndex: 0);
+    }
+    public void GoToLeaderBoards()
+    {
+        SceneManager.LoadScene(sceneBuildIndex: 4);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

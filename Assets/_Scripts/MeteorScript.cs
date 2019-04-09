@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 public class MeteorScript : MonoBehaviour
 {
+    private const int _conValue = 1;
     [SerializeField]
     private float _speed;
     [SerializeField]
@@ -24,13 +25,13 @@ public class MeteorScript : MonoBehaviour
     {
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
-        if (this.transform.position.y > CamAspect._cam.orthographicSize + 1)
+        if (this.transform.position.y > CamAspect._cam.orthographicSize + _conValue)
             newPos.y = -CamAspect._cam.orthographicSize;
-        if (transform.position.y < -CamAspect._cam.orthographicSize - 1)
+        if (transform.position.y < -CamAspect._cam.orthographicSize - _conValue)
             newPos.y = CamAspect._cam.orthographicSize;
-        if (transform.position.x > camAsp.ScreenSizeX + 1)
+        if (transform.position.x > camAsp.ScreenSizeX + _conValue)
             newPos.x = -camAsp.ScreenSizeX;
-        if (transform.position.x < -camAsp.ScreenSizeX - 1)
+        if (transform.position.x < -camAsp.ScreenSizeX - _conValue)
             newPos.x = camAsp.ScreenSizeX;
 
         transform.position = newPos;

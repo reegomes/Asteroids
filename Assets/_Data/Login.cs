@@ -29,5 +29,8 @@ public class Login : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-    public void VerifyInputs() => _submitButton.interactable = (_nameField.text.Length >= 3 && _passwordField.text.Length >= 3);
+    public void VerifyInputs()
+    {
+        _submitButton.interactable = (_nameField.text.Length >= 3 && _passwordField.text.Length >= 3);
+    }
 }

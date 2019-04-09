@@ -18,7 +18,10 @@ public class Score : MonoBehaviour
         CurrentScore = 0;
         _txtHighScore.text = Score.CurrentHighScore.ToString();
     }
-    private void Update() => _txtScore.text = CurrentScore.ToString();
+    private void Update()
+    {
+        _txtScore.text = CurrentScore.ToString();
+    }
     public static void CheckHighScore()
     {
         TotalPoints += CurrentScore;

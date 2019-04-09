@@ -33,13 +33,13 @@ public class Input : MonoBehaviour
     }
     private void Update()
     {
-        if (!GM.IsPause)
+        if (!GameManager.IsPause)
         {
             _rb.AddRelativeForce(Vector2.up * Vertical);
             transform.Rotate(Vector3.forward * Horizontal * Time.deltaTime * -100);
         }
 
-        if (Vertical > 0 && Player.IsAlive == true && GM.IsPause == false)
+        if (Vertical > 0 && Player.IsAlive == true && GameManager.IsPause == false)
         {
             _rocket.SetActive(true);
         }
@@ -65,7 +65,7 @@ public class Input : MonoBehaviour
     }
     private void HandleFire(InputAction.CallbackContext obj)
     {
-        if (!GM.IsPause && Player.IsAlive)
+        if (!GameManager.IsPause && Player.IsAlive)
         {
             GameObject tBullet = Instantiate(_bullet, _bTransform.transform.position, _bTransform.transform.rotation);
             tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 500);

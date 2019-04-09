@@ -2,6 +2,9 @@
 using UnityEngine;
 public class UfoRed : MonoBehaviour
 {
+    private const int _valueCon = 3;
+    private const int _speedCon = 300;
+    private const int _conPoints = 1000;
     private GameObject _tPlayer;
     [SerializeField]
     private Rigidbody2D _rb;
@@ -29,13 +32,13 @@ public class UfoRed : MonoBehaviour
     {
         // Controle de posicionamento
         Vector2 newPos = this.transform.position;
-        if (this.transform.position.y > CamAspect._cam.orthographicSize + 3)
+        if (this.transform.position.y > CamAspect._cam.orthographicSize + _valueCon)
             DestroyThis();
-        if (transform.position.y < -CamAspect._cam.orthographicSize - 3)
+        if (transform.position.y < -CamAspect._cam.orthographicSize - _valueCon)
             DestroyThis();
-        if (transform.position.x > camAsp.ScreenSizeX + 3)
+        if (transform.position.x > camAsp.ScreenSizeX + _valueCon)
             DestroyThis();
-        if (transform.position.x < -camAsp.ScreenSizeX - 1)
+        if (transform.position.x < -camAsp.ScreenSizeX - _valueCon)
             DestroyThis();
 
         transform.position = newPos;
@@ -60,15 +63,18 @@ public class UfoRed : MonoBehaviour
     IEnumerator Fire()
     {
         GameObject tBullet = Instantiate(_bullet, _bTransform.transform.position, _bTransform.transform.rotation);
-        tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * 300);
+        tBullet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * _speedCon);
         yield return new WaitForSeconds(2);
         StartCoroutine(Fire());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        AddScore(1000);
+        AddScore(_conPoints);
         Score.AliensKilled++;
         Destroy(this.gameObject);
     }
-    void AddScore(int points) => Score.CurrentScore += points;
+    void AddScore(int points)
+    {
+        Score.CurrentScore += points;
+    }
 }

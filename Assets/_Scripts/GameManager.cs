@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class GM : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     #region Singleton
-    private static GM _instance;
-    public static GM Instance
+    private static GameManager _instance;
+    public static GameManager Instance
     {
         get
         {
             if (_instance == null)
             {
                 GameObject go = new GameObject("GM");
-                go.AddComponent<GM>();
+                go.AddComponent<GameManager>();
             }
             return _instance;
         }
@@ -25,6 +25,8 @@ public class GM : MonoBehaviour
     [SerializeField]
     private GameObject _meteorPrefab, _mediumMeteorPrefab, _smallMeteorPrefab;
     private int _meteorsToSpawn = 30;
+    private const int _conNumMeteors = 9;
+    private const int _conNumMeteorsSecondSpawn = 40;
     [SerializeField]
     private GameObject[] _spawners;
     [SerializeField]
@@ -34,7 +36,10 @@ public class GM : MonoBehaviour
     [SerializeField]
     private List<GameObject> _smallMeteorsList = new List<GameObject>();
     #endregion
-    private void Awake() => _instance = this;
+    private void Awake()
+    {
+        _instance = this;
+    }
     private void Start()
     {
         IsPause = false;
@@ -63,14 +68,14 @@ public class GM : MonoBehaviour
     public IEnumerator SpawnInstance(int timing)
     {
         yield return new WaitForSeconds(timing);
-        if (MeteorController.MetNumOnScreen <= 9)
+        if (MeteorController.MetNumOnScreen <= _conNumMeteors)
         {
             MeteorController.TotalMet++;
-            for (int i = 0; i < GM.Instance._meteorsList.Count; i++)
+            for (int i = 0; i < GameManager.Instance._meteorsList.Count; i++)
             {
-                if (GM.Instance._meteorsList[i].activeInHierarchy == false)
+                if (GameManager.Instance._meteorsList[i].activeInHierarchy == false)
                 {
-                    GM.Instance._meteorsList[i].SetActive(true);
+                    GameManager.Instance._meteorsList[i].SetActive(true);
                     break;
                 }
             }
@@ -81,21 +86,21 @@ public class GM : MonoBehaviour
             StartCoroutine(SpawnInstance(timing));
         }
     }
-    public IEnumerator SpawnInstance(int timing, int a, Vector2 position)
+    public IEnumerator SpawnInstance(int timing, int size, Vector2 position)
     {
-        if (a == 1)
+        if (size == 1)
         {
-            if (MeteorController.MetNumOnScreen <= 40)
+            if (MeteorController.MetNumOnScreen <= _conNumMeteorsSecondSpawn)
             {
                 MeteorController.TotalMet++;
-                for (int i = 0; i < GM.Instance._mediumMeteorsList.Count; i++)
+                for (int i = 0; i < GameManager.Instance._mediumMeteorsList.Count; i++)
                 {
-                    if (GM.Instance._mediumMeteorsList[i].activeInHierarchy == false)
+                    if (GameManager.Instance._mediumMeteorsList[i].activeInHierarchy == false)
                     {
-                        GM.Instance._mediumMeteorsList[i].transform.position = position;
-                        GM.Instance._mediumMeteorsList[i].SetActive(true);
-                        GM.Instance._mediumMeteorsList[i + 1].transform.position = position;
-                        GM.Instance._mediumMeteorsList[i + 1].SetActive(true);
+                        GameManager.Instance._mediumMeteorsList[i].transform.position = position;
+                        GameManager.Instance._mediumMeteorsList[i].SetActive(true);
+                        GameManager.Instance._mediumMeteorsList[i + 1].transform.position = position;
+                        GameManager.Instance._mediumMeteorsList[i + 1].SetActive(true);
                         break;
                     }
                 }
@@ -106,19 +111,19 @@ public class GM : MonoBehaviour
                 StartCoroutine(SpawnInstance(timing));
             }
         }
-        else if (a == 2)
+        else if (size == 2)
         {
-            if (MeteorController.MetNumOnScreen <= 40)
+            if (MeteorController.MetNumOnScreen <= _conNumMeteorsSecondSpawn)
             {
                 MeteorController.TotalMet++;
-                for (int i = 0; i < GM.Instance._smallMeteorsList.Count; i++)
+                for (int i = 0; i < GameManager.Instance._smallMeteorsList.Count; i++)
                 {
-                    if (GM.Instance._smallMeteorsList[i].activeInHierarchy == false)
+                    if (GameManager.Instance._smallMeteorsList[i].activeInHierarchy == false)
                     {
-                        GM.Instance._smallMeteorsList[i].transform.position = position;
-                        GM.Instance._smallMeteorsList[i].SetActive(true);
-                        GM.Instance._smallMeteorsList[i + 1].transform.position = position;
-                        GM.Instance._smallMeteorsList[i + 1].SetActive(true);
+                        GameManager.Instance._smallMeteorsList[i].transform.position = position;
+                        GameManager.Instance._smallMeteorsList[i].SetActive(true);
+                        GameManager.Instance._smallMeteorsList[i + 1].transform.position = position;
+                        GameManager.Instance._smallMeteorsList[i + 1].SetActive(true);
                         break;
                     }
                 }

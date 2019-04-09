@@ -2,12 +2,14 @@
 using UnityEngine.U2D;
 public class Meteors : MonoBehaviour
 {
+
     #region Geracao e opcoes dos meteoros
     [SerializeField]
     private SpriteAtlas _atlas;
     [SerializeField]
     private SpriteRenderer _meteorRenderer;
     public byte MeteorSize;
+    private const int _bigPoints = 100, _medPoints = 250, _smallPoints = 500;
     #endregion
     private void OnEnable()
     {
@@ -38,21 +40,21 @@ public class Meteors : MonoBehaviour
         Destroy(collision.gameObject);
         if (this.MeteorSize == 1)
         {
-            AddScore(100);
+            AddScore(_bigPoints);
             MeteorController.MetNumOnScreen--;
-            StartCoroutine(GM.Instance.SpawnInstance(1, MeteorSize, this.transform.position));
+            StartCoroutine(GameManager.Instance.SpawnInstance(1, MeteorSize, this.transform.position));
             OnDisable();
         }
         else if (this.MeteorSize == 2)
         {
-            AddScore(250);
+            AddScore(_medPoints);
             MeteorController.MetNumOnScreen--;
-            StartCoroutine(GM.Instance.SpawnInstance(1, MeteorSize, this.transform.position));
+            StartCoroutine(GameManager.Instance.SpawnInstance(1, MeteorSize, this.transform.position));
             OnDisable();
         }
         else if (this.MeteorSize == 3)
         {
-            AddScore(500);
+            AddScore(_smallPoints);
             MeteorController.MetNumOnScreen--;
             OnDisable();
         }
@@ -64,6 +66,12 @@ public class Meteors : MonoBehaviour
             //OnDisable();         
         }
     }
-    private void OnDisable() => this.gameObject.SetActive(false);
-    void AddScore(int points) => Score.CurrentScore += points;
+    private void OnDisable()
+    {
+        this.gameObject.SetActive(false);
+    }
+    void AddScore(int points)
+    {
+        Score.CurrentScore += points;
+    }
 }

@@ -2,6 +2,9 @@
 using UnityEngine;
 public class Player : MonoBehaviour
 {
+    private const int _valueCon = 1;
+    private const int _conLifes = 3;
+    private const int _conImpact = 3;
     #region Rigidbody
     [SerializeField]
     private Rigidbody2D _rb;
@@ -28,9 +31,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         // Vidas
-        Life = 3;
+        Life = _conLifes;
         // Força do impactor
-        _impact = 3;
+        _impact = _conImpact;
         // Instanciação da Camera
         camAsp.CamStart();
         // Inicia vivo
@@ -43,13 +46,13 @@ public class Player : MonoBehaviour
         {
             // Controle de posicionamento
             Vector2 newPos = this.transform.position;
-            if (this.transform.position.y > CamAspect._cam.orthographicSize + 1)
+            if (this.transform.position.y > CamAspect._cam.orthographicSize + _valueCon)
                 newPos.y = -CamAspect._cam.orthographicSize;
-            if (transform.position.y < -CamAspect._cam.orthographicSize - 1)
+            if (transform.position.y < -CamAspect._cam.orthographicSize - _valueCon)
                 newPos.y = CamAspect._cam.orthographicSize;
-            if (transform.position.x > camAsp.ScreenSizeX + 1)
+            if (transform.position.x > camAsp.ScreenSizeX + _valueCon)
                 newPos.x = -camAsp.ScreenSizeX;
-            if (transform.position.x < -camAsp.ScreenSizeX - 1)
+            if (transform.position.x < -camAsp.ScreenSizeX - _valueCon)
                 newPos.x = camAsp.ScreenSizeX;
 
             transform.position = newPos;
@@ -79,8 +82,14 @@ public class Player : MonoBehaviour
             }
         }
     }
-    void TakeDamage(int damage) => Life -= damage;
-    void GameOver() => _gameOver.SetActive(true);
+    void TakeDamage(int damage)
+    {
+        Life -= damage;
+    }
+    void GameOver()
+    {
+        _gameOver.SetActive(true);
+    }
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(3f);

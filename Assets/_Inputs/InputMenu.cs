@@ -36,7 +36,7 @@ public class InputMenu : MonoBehaviour
             Time.timeScale = 0f;
             _txtPause.text = "Paused";
             _pausePanel.SetActive(true);
-            GM.IsPause = true;
+            GameManager.IsPause = true;
         }
     }
 }

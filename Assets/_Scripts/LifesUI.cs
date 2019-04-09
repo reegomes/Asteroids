@@ -39,6 +39,12 @@ public class LifesUI : MonoBehaviour
                 break;
         }
     }
-    public static void RemoveLife() => LifeAmount -= 1;
-    public static void AddLife() => LifeAmount += 1;
+    public static void RemoveLife()
+    {
+        LifeAmount -= 1;
+    }
+    public static void AddLife()
+    {
+        LifeAmount += 1;
+    }
 }
